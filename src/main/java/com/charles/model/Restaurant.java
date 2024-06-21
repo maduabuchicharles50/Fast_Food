@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -25,6 +26,10 @@ public class Restaurant {
     private  String description;
 
     @OneToOne
+    private User owner;
+//    private String title;
+
+    @OneToOne
     private  Address address;
 
     @Embedded
@@ -39,8 +44,10 @@ public class Restaurant {
     @Column(length = 1000)
     private List<String >images;
 
+    @CreationTimestamp
     private LocalDateTime registrationDate;
-    private boolean open;
+
+    private boolean open=true;
 
     @JsonIgnore
     @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL)

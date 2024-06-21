@@ -9,7 +9,7 @@ import java.util.List;
 @Embeddable
 @Data
 public class RestaurantDto {
-    private String title;
+    private String name;
 
     @Column(length = 1000)
     private List<String> images;
