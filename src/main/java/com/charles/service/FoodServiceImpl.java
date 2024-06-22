@@ -36,17 +36,13 @@ public class FoodServiceImpl implements FoodService{
         restaurant.getFoods().add(savedFood);
         return savedFood;
 
-
     }
-
     @Override
     public void deleteFood(Long foodId) throws Exception {
         Food food = findFoodById(foodId);
         food.setRestaurant(null);
         foodRepository.save(food);
-
     }
-
     @Override
     public List<Food> getRestaurantFood(Long restaurantId, boolean isVegetarian, boolean isNonveg, boolean isSeasonal, String foodCategory) {
        List<Food>foods=foodRepository.findByRestaurantId(restaurantId);
